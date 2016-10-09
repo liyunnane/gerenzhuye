@@ -1,0 +1,280 @@
+@media screen and (max-width:1200px){
+    .grid1 p{
+        margin:0 auto;
+    }
+    .grid2 ul li {
+        width:40%;
+        margin-right:10%;
+    }
+    #works ul.classify li:nth-last-of-type(1){
+        display: none;
+    }
+    #works ul.classify li{
+        width:33.333333%;
+    }
+    #works .container{
+        width:100%;
+        padding:0 15px;
+    }
+}
+@media screen and (max-width:840px) {
+    .grid1 p{
+        color: #c74a2b;
+        font-size: 1.2em;
+        line-height: 1.5em;
+        font-weight: 700;
+    }
+    .grid2 ul li {
+        width:40%;
+        margin-left:30%;
+    }
+    #works .container .screen .full_station div.slide_bars{
+        width:80px;
+        right:0px;
+    }
+    #works .container .screen .full_station .slide_bars li:nth-last-of-type(n+2){
+        display: none;
+    }
+    #works .container .screen .static_web_page  .btnL{
+        margin-right:20%;
+    }
+}
+@media screen and (max-width:640px) {
+    .wrap{
+        width:100%;
+    }
+    .grid2 ul li {
+        width:60%;
+        margin-left:20%;
+    }
+    #works .container .screen .static_web_page dl dd h2{
+        font-size: 18px;
+    }
+}
+@media screen and (max-width:540px) {
+    /*状态栏*/
+    .top-nav ul li{
+        display:block;
+    }
+    .top-nav .menu{
+        height:68px;
+        width:105px;
+        padding-top:25px;
+        cursor:pointer;
+    }
+    .top-nav ul{
+        height:68px;
+        overflow: hidden;
+        transition:all 0.3s;
+    }
+    .top-nav ul.active{
+        height:auto;
+    }
+    .top-nav .menu div{
+        width:25px;
+        height:4px;
+        background: #c0c0c0;
+        margin:0 auto 7px;
+        transition:all 0.5s;
+    }
+    .top-nav ul.active .menu div:nth-of-type(1){
+        transform:translateY(11px) rotate(45deg);
+    }
+    .top-nav ul.active .menu div:nth-of-type(2){
+        transform:rotate(135deg);
+    }
+    /*banner*/
+    .grid1 h3{
+        font-size:2.4em;
+    }
+    .grid1{
+        height:350px;
+    }
+    .grid1 p{
+        line-height: 1.9em !important;
+    }
+    /*掌握技能*/
+    .grid2 h3{
+        font-size:1.6em;
+    }
+    .grid2 p{
+        font-size:1em;
+        line-height:2.5em;
+    }
+    #works .container .screen .static_web_page  .btnL{
+        margin-right:25%;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .main{
+        width:100%;
+        padding:15px 0 50px;
+    }
+    .bk-list li .bk-page,.bk-list li .bk-front, .bk-list li .bk-back, .bk-list li .bk-front > div {
+        width:210px;
+        height:280px;
+    }
+    .bk-list li{
+        margin-top:15px;
+    }
+    .grid2 ul li {
+        width:100%;
+       margin-left:0;
+
+    }
+    .bk-list li .bk-book{
+        width:210px;
+        left:0;right:0;
+        margin-left:auto!important;
+        margin-right:auto;
+    }
+    .bk-list li .bk-page{
+        top:0;
+    }
+    .bk-list li .bk-front > div h2 span:nth-of-type(1){
+        font-size: 16px;
+    }
+    .book-3 .bk-cover{
+        background-size:60%;
+    }
+    .book-1 .bk-cover{
+        background-size:60%;
+    }
+    .bk-list li .bk-left{
+        height:28px;
+    }
+    .book-3 .bk-cover h2 span:last-child, .book-3 .bk-left h2 span:last-child, .book-3 .bk-content p{
+        font-size: 13px;
+    }
+    .book-3 .bk-cover h2 span:first-child, .book-3 .bk-left h2 span:first-child{
+        font-size: 13px;
+        padding-right:3px;
+    }
+    .book-2 .bk-cover h2 span:last-child, .book-2 .bk-left h2 span:last-child, .book-2 .bk-content p{
+        font-size: 13px;
+    }
+    .book-2 .bk-cover h2 span:first-child, .book-2 .bk-left h2 span:first-child{
+        font-size: 13px;
+        padding-right:3px;
+    }
+    .book-1 .bk-cover h2 span:last-child, .book-1 .bk-left h2 span:last-child, .book-1 .bk-content p{
+        font-size: 13px;
+    }
+    .book-1 .bk-cover h2 span:first-child, .book-1 .bk-left h2 span:first-child{
+        font-size: 13px;
+        padding-right:3px;
+    }
+    .grid2 img{
+        max-width:70%;
+    }
+    .grid2 h3{
+        font-size:1.5em;
+        line-height: 1.2em;
+    }
+    .bk-content{
+        padding:10px;
+    }
+    .book-3 .bk-content p.main{
+        font-size: 12px;
+    }
+    .book-2 .bk-content p.main{
+        font-size: 12px;
+    }
+    .book-1 .bk-content p.main{
+        font-size: 12px;
+    }
+    .grid2 p{
+        line-height: 1.2em;
+        padding:0 20px;
+    }
+    .book-3 .bk-back p{
+        display: none;
+    }
+    .book-3 .bk-back p{
+        height:280px;
+    }
+    .bk-list li .bk-book{
+        height:280px;
+        margin-left:0%;
+
+    }
+    .bk-info{
+        margin-top:300px;
+    }
+    .book-1 .bk-left h2{
+        text-align:justify;
+        padding:0 14px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+
+    }
+    .book-2 .bk-left h2{
+        text-align:justify;
+        padding:0 14px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .book-3 .bk-left h2{
+        text-align:justify;
+        padding:0 14px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    #works .container .screen{
+        height:240px;
+    }
+    #contacts .box,#contacts .box1,#contacts .box2{
+        width:100%;
+    }
+    #contacts .box2 textarea{
+        height:70px;
+        max-height:70px;
+        min-height:70px;
+    }
+    #contacts .box2 input{
+        display: block;
+        margin:3px auto;
+    }
+    #contacts{
+        height:540px;
+    }
+    .grid1{
+        background-attachment: inherit;
+    }
+    .grid3-header h3{
+        font-size:1.5em;
+    }
+    #works ul.classify li{
+        font-size: 18px;
+    }
+    .grid1 h3{
+        font-size: 1.5em;
+    }
+    .grid1 p{
+        font-size: 1.3em;
+    }
+    .header{
+        left:0;
+    }
+    #works .container .screen .static_web_page .btn{
+        bottom:-23px;
+        width:125%;
+        left:-12.5%;
+        /*margin:0 auto;*/
+        background:#fff;
+    }
+    #works .container .screen .static_web_page .btnL {
+        margin-right:80%;
+        margin-bottom:-3px;
+    }
+    #works .container .screen .static_web_page .btnR {
+        margin-right:20%;
+        margin-bottom:-3px;
+    }
+}
+
+

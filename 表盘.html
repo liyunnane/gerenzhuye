@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表盘</title>
+    <script src="../../js/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var h, m, s;
+
+            function createBp() {
+                /*创建刻度*/
+                for (var i = 0; i < 60; i++) {
+                    var widths = 2;
+                    var heights = 8;
+                    if (i % 5 == 0) {
+                        widths = 4;
+                        heights = 16;
+                    }
+                    var num = i * 6;
+                    $("<div></div>").css({
+                        width: widths, height: heights, background: "rgba(55, 72, 148, 0.85)", position: "absolute", left: "149px",
+                        top: "7px", transformOrigin: "1px 143px", transform: "rotate(" + num + "deg)"
+                    }).appendTo(".biaopan");
+                }
+                /*创建数字*/
+                for(var i=0;i<12;i++){
+                    let num=(i+6)%12;
+                    if(num==0){
+                        num=12;
+                    }
+                    let angle=-i*30*Math.PI/180;
+                    let left=135+120*Math.sin(angle)+"px";
+                    let top=135+120*Math.cos(angle)+"px";
+                    $("<div>"+num+"</div>")
+                            .css({width:"30px",
+                                height:"30px",
+                                position:"absolute",
+                                left:left,
+                                top:top,
+                                fontSize:"20px",
+                                fontWeight:"800",
+                                textAlign:"center",
+                                lineHeight:"30px"}).appendTo(".biaopan");
+                }
+
+                /*创建时间*/
+                var date = new Date();
+                var hour = date.getHours();
+                var min = date.getMinutes();
+                var soc = date.getSeconds();
+                /*时针*/
+                h = $("<div></div>").css({
+                    width: 10,
+                    height: 55,
+                    background: "#000",
+                    borderRadius: "6px 6px 5px 5px/15px 15px 3px 3px",
+                    position: "absolute",
+                    left: 145,
+                    bottom: 148,
+                    zIndex: 3,
+                    transformOrigin: "5px 53px",
+                    transform: "rotate(" + (hour * 30 + min * 0.5) + "deg)"
+                }).appendTo(".biaopan");
+                /*分针*/
+                m = $("<div></div>").css({
+                    width: 8,
+                    height: 70,
+//                    background: "#000",
+                    borderRadius: "5px 5px 5px 5px",
+                    position: "absolute",
+                    backgroundImage:"linear-gradient(to bottom,#292929 0%,#292929 60%,#0A0A0A 90%)",
+                    left: 146,
+                    bottom: 140,
+                    zIndex: 2,
+                    transformOrigin: "center 60px",
+                    transform: "rotate(" + min * 6 + "deg)"
+                }).appendTo(".biaopan");
+                /*秒针*/
+                s = $("<div></div>").css({
+                    width: 4,
+                    height: 120,
+                    background: "#f00",
+                    borderRadius: "5px 5px 5px 5px",
+                    position: "absolute",
+                    left: 148,
+                    bottom: 125,
+                    zIndex: 1,
+                    transformOrigin: "2px 95px",
+                    transform: "rotate(" + soc * 6 + "deg)"
+                }).appendTo(".biaopan");
+            }
+
+            createBp();
+            function createTime() {
+                setInterval(function () {
+                    var date = new Date();
+                    var hour = date.getHours();
+                    var min = date.getMinutes();
+                    var soc = date.getSeconds();
+                    s.css({transform: "rotate(" + soc * 6 + "deg)"});
+                    m.css({transform: "rotate(" + min * 6 + "deg)"});
+                    h.css({transform: "rotate(" + (hour * 30 + min * 0.5) + "deg)"});
+                    /*连接一个集合需要需要用括号圈起来*/
+                    console.log(hour * 30 + min * 0.5)
+                }, 1000);
+            }
+
+            createTime();
+
+        })
+    </script>
+    <style>
+        .biaopanBox{
+            width:600px;
+            height:400px;
+            background:url(biaopan.jpg) no-repeat top center;
+            background-size: contain;
+            border:1px solid transparent;
+        }
+        .biaopan {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            position: relative;
+            left:0;top:0;
+            transform: scale(0.5) translate(-49px,-85px);
+            background-image: radial-gradient(circle at center center, #fbfbfb 0, #ddd 125px, #ccc 136px,#524b7f 142px, #756f7f 144px,#111 144px,#111 146px,#999 146px,#999 150px);
+        }
+    </style>
+</head>
+<body>
+<div class="biaopanBox">
+<div class="biaopan">
+</div>
+</div>
+</body>
+</html>

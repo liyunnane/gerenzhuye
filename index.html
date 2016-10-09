@@ -1,0 +1,665 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>李云</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/default.css"/>
+    <link rel="stylesheet" type="text/css" href="css/component.css"/>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/media.css">
+    <script src="js/modernizr.custom.js"></script>
+    <!--jquery-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+
+    <!--jquery-->
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+            });
+        });
+    </script>
+</head>
+<body>
+<!---start-wrap--->
+<!---start-header--->
+<div class="header">
+    <div class="wrap">
+        <!---start-logo--->
+        <div class="logo">
+            <span class="liyun">liyun</span>
+        </div>
+        <!---End-logo--->
+        <!---start-top-nav--->
+        <div class="top-nav">
+            <ul>
+                <div class="menu">
+                    <div></div>
+                    <div></div>
+                </div>
+                <li class="active"><a href="#me" class="scroll">about me</a></li>
+                <li><a href="#skills" class="scroll">skills</a></li>
+                <li><a href="#works" class="scroll">prouction</a></li>
+                <li><a href="#contacts" class="scroll">telephone</a></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <!---End-top-nav--->
+    </div>
+    <!--ui作品展示 start-->
+    <div class="works_zhezhao">
+        <div>
+            <div class="next" title="向下翻"></div>
+            <div class="prev" title="向上翻"></div>
+            <div class="callback iconfont" title="返回顶部"></div>
+            <div class="close iconfont" title="关闭详细信息">
+            </div>
+        </div>
+        <!--ui作品展示 end-->
+    </div>
+</div>
+<!---End-wrap--->
+<!--主体见面 start-->
+<div class="content">
+    <div class="grid1 floor" id="me">
+        <h3>欢迎来到我的主页</h3>
+        <p>我是李云</p>
+        <p>格言:上帝只救自救的人</p>
+    </div>
+    <div class="grid2 floor" id="skills">
+        <h3>掌握的技能</h3>
+        <p>已掌握前端的各项基本技能并运用熟练</p>
+        <div class="main">
+            <ul id="bk-list" class="bk-list clearfix">
+                <li>
+                    <div class="bk-book book-3 bk-bookdefault">
+                        <div class="bk-front">
+                            <div class="bk-cover">
+                                <h2>
+                                    <span>DIV+CSS框架</span>
+                                    <span>熟练使用CSS3与HTML5</span>
+                                </h2>
+                            </div>
+                            <div class="bk-cover-back"></div>
+                        </div>
+                        <div class="bk-page">
+                            <div class="bk-content bk-content-current">
+                                <h3>CSS3</h3>
+                                <p class="main">掌握css3新增的选择器，让页面更加同一，方便后台传输数据。
+                                    <br/><br/>
+                                    掌握css3新增的border、background-image、text样式。让css功能更加强大，减少js代码的压力。
+                                    <br/><br/>
+                                    掌握transition transform过渡与动画，效果更加自然。
+                                </p>
+                            </div>
+                            <div class="bk-content">
+                                <h3>HTML5</h3>
+                                <p class="main">掌握HTML5新增标签，让页面更加整洁合理，方便后期维护。
+                                    <br><br>
+                                    掌握HTML5新增表单type属性与autofocus、placeholder、autocomplete等其他属性。
+                                </p>
+                            </div>
+                            <div class="bk-content">
+                                <h3>SCSS</h3>
+                                <p class="main">
+                                    熟练使用scss进行编译css，包括变量、嵌套、混合等方式。
+                                    <br><br>
+                                    会使用bootstorp框架，栅格化布局、rem布局、固定宽高布局。
+                                </p>
+                            </div>
+                            <nav><span class="bk-page-prev">&lt;</span><span class="bk-page-next">&gt;</span></nav>
+                        </div>
+                        <div class="bk-back">
+                            <img src="images/icon2.png" alt="cat">
+                            <p>DIV+CSS是网页制作最基本的框架,DIV用来把网页模块化,CSS用来给这些模块增添样式,两者缺一不可，是目前的主流网页布局方式。</p>
+                        </div>
+                        <div class="bk-right"></div>
+                        <div class="bk-left">
+                            <h2>
+                                <span>Div装载内容</span>
+                                <span>CSS呈现样式</span>
+                            </h2>
+                        </div>
+                        <div class="bk-top"></div>
+                        <div class="bk-bottom"></div>
+                    </div>
+                    <div class="bk-info">
+                        <button class="bk-bookback">简要</button>
+                        <button class="bk-bookview">了解详情</button>
+                        <h3>
+                            <span>Div装载内容</span>
+                            <span>CSS呈现样式</span>
+                        </h3>
+                        <p>目前主流web端布局方式</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="bk-book book-2 bk-bookdefault">
+                        <div class="bk-front">
+                            <div class="bk-cover">
+                                <img src="images/js.png" alt="" style="margin-top:30px;">
+                                <h3>
+                                    <span style>Javascript</span>
+                                    <br/>
+                                    <span>一种操纵HTML与CSS的语言</span>
+                                </h3>
+                            </div>
+                            <div class="bk-cover-back"></div>
+                        </div>
+                        <div class="bk-page">
+                            <div class="bk-content">
+                                <h3>原生js</h3>
+                                <p class="main">已熟练使用原生js进行动效设计。临摹过移动、银泰的首页等静态页面。会使用node.js。</p>
+                            </div>
+                            <div class="bk-content bk-content-current">
+                                <h3>jquery</h3>
+                                <p class="main">熟悉jquery的各种属性和方法，临摹过天猫网首页。会使用jquery进行楼层跳转，按需加载等。</p>
+                            </div>
+                            <div class="bk-content bk-content-current">
+                                <h3>移动端js</h3>
+                                <p class="main">对原生的移动端js、touch.js熟练使用，会使用angular.js插件库。</p>
+                            </div>
+                            <div class="bk-content bk-content-current">
+                                <h3>会使用的js插件</h3>
+                                <p class="main">transiton.js、bootstrap、fullPage.js等js插件</p>
+                            </div>
+
+                            <nav><span class="bk-page-prev">&lt;</span><span class="bk-page-next">&gt;</span></nav>
+                        </div>
+                        <div class="bk-back">
+                            <p class="main">javascript是一种让你的网页更加生动活泼的语言，提高网页的可观性，和用户更好的交互。是当下网页制作不可或缺的高级语言</p>
+                        </div>
+                        <div class="bk-right"></div>
+                        <div class="bk-left">
+                            <h2>
+                                <span style="color:#FD8000;">Javascript语言</span>
+                                <span style="color:#3FB390">让你的网页更加生动活泼</span>
+                            </h2>
+                        </div>
+                        <div class="bk-top"></div>
+                        <div class="bk-bottom"></div>
+                    </div>
+                    <div class="bk-info">
+                        <button class="bk-bookback">简要</button>
+                        <button class="bk-bookview">了解详情</button>
+                        <h3>
+                            <span>操控HTML与css</span>
+                            <span>页面交互的不二之选</span>
+                        </h3>
+                        <p>js的强大之处在于它可以实现页面的各种动画，让页面更加友好，可以和用户进行不同程度的互动，让页面活起来。</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="bk-book book-1 bk-bookdefault">
+                        <div class="bk-front">
+                            <div class="bk-cover">
+                                <h2>
+                                    <span>Adobe工具</span>
+                                    <span>PS+AI</span>
+                                </h2>
+                            </div>
+                            <div class="bk-cover-back"></div>
+                        </div>
+                        <div class="bk-page">
+                            <div class="bk-content bk-content-current">
+                                <h3>PS</h3>
+                                <p>熟练掌握ps中扁平化图标与伪扁平图标的制作,会制作拟物化图标，切图，通道抠图等</p>
+                            </div>
+                            <div class="bk-content">
+                                <h3>AI</h3>
+                                <p>会制作icon图标，闪屏，及其他的矢量图标</p>
+                            </div>
+                        </div>
+                        <div class="bk-back">
+                            <p>在使用Ps与Ai的时候,最重要的是细心与耐心,慢工出细活,在网页设计中很可能就是因为几像素的设计偏差而导致网页整体感觉较差。</p>
+                        </div>
+                        <div class="bk-right"></div>
+                        <div class="bk-left">
+                            <h2>
+                                <span>PS切图</span>
+                                <span>AI字体图标</span>
+                            </h2>
+                        </div>
+                        <div class="bk-top"></div>
+                        <div class="bk-bottom"></div>
+                    </div>
+                    <div class="bk-info">
+                        <button class="bk-bookback">简要</button>
+                        <button class="bk-bookview">了解详情</button>
+                        <h3>
+                            <span>设计师与前端工程师的桥梁</span>
+                            <span>前端辅助工具</span>
+                        </h3>
+                        <p>只需要一个psd格式的文件，就可以布出完全相同的web端网页</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <script src="js/jquery-1.8.3.min.js"></script>
+        <script src="js/books1.js"></script>
+        <script>
+            $(function () {
+                Books.init();
+            });
+        </script>
+    </div>
+    <div class="grid3 floor" id="works">
+        <div class="grid3-header">
+            <h3>作品展示</h3>
+        </div>
+        <div class="container">
+            <ul class="classify">
+                <li class="active">静态网页</li>
+                <li>整站</li>
+                <li>游戏场景</li>
+                <li>UI设计</li>
+            </ul>
+            <div class="screen">
+
+                <!--静态页面-->
+                <div class="static_web_page_start">
+                    <div class="item"><img src="" alt=""></div>
+                    <div class="item"><img src="" alt=""></div>
+                    <div class="item"><img src="" alt=""></div>
+                    <div class="item"><img src="" alt=""></div>
+                    <div class="item"><img src="" alt=""></div>
+                    <div class="item"><img src="" alt=""></div>
+                </div>
+                <!--整站-->
+                <div class="full_station">
+                    <div class="slide_bars">
+                        <ol>
+                            <li class="active" data-obj="index">首页</li>
+                            <li data-obj="about">关于燕园财税</li>
+                            <li data-obj="news">财税会员</li>
+                            <li data-obj="brand">会员专属课</li>
+                            <li data-obj="invester">联系我们</li>
+                            <li data-obj="active">会员中心</li>
+                            <li><a href="http://www.yycs.org/" target="_blank">进入网站</a></li>
+                        </ol>
+                    </div>
+                    <div class="index actives">
+                        <img src="images/index.png" alt="">
+                    </div>
+                    <div class="about">
+                        <img src="images/about_lanmu.png" alt="">
+                    </div>
+                    <div class="news">
+                        <img src="images/news_lanmu.png" alt=""><img src="images/news_liebiao.png" alt=""><img
+                            src="images/news_xiangqing.png" alt="">
+                    </div>
+                    <div class="brand">
+                        <img src="images/brand_lanmu.png" alt=""><img src="images/brand_liebiao.png" alt=""><img
+                            src="images/brand_xiangqing.png" alt="">
+                    </div>
+                    <div class="invester">
+                        <img src="images/investor_lanmu.png" alt=""><img src="images/investor_liebiao.png" alt=""><img
+                            src="images/investor_xiangqing.jpg" alt="">
+                    </div>
+                    <div class="active">
+                        <img src="images/active_lanmu.png" alt=""><img src="images/active_liebiao.png" alt=""><img
+                            src="images/active_xiangqing.png" alt="">
+                    </div>
+
+                </div>
+                <!--游戏-->
+                <div class="game">
+                    <div class="type">
+                        <h3>打字游戏</h3>
+                        <a href="http://liyunnane.github.io/dazi" target="_blank">
+                            <img src="images/type_game.png" alt="" class="main">
+                        </a>
+                    </div>
+                    <div class="type">
+                        <h3>贪吃蛇游戏</h3>
+                        <a href="https://liyunnane.github.io/snake/" target="_blank">
+                            <img src="images/shaolei_game.png" alt="" class="main">
+                        </a>
+                    </div>
+                </div>
+                <!--ui作品-->
+                <div class="ui-works">
+                    <div class="ui">
+                        <ol>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ol>
+                        <ol>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ol>
+                        <ol>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ol>
+                        <ol>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ol>
+                    </div>
+                    <div class="content">
+                        <dl>
+                            <dd>
+                                <H3>哈雷摩托车</H3>
+                                <p>使用ps制作的一套web端新闻类网站,整体风格严谨规范,有首页，栏目页，图文列表页，文章列表页，以及图文详情页，文章详情页和单页</p>
+                                <span>制作时间：2015.8-2015.12</span>
+                                <div class="btn" data-img="tttt.jpg">
+                                    查看详情
+                                </div>
+                            </dd>
+                            <dd>
+                                <H3>嗨翻音乐</H3>
+                                <p>使用ps制作的一套音乐app网站,整体风格热情激烈,有首页，个人主页，播放页，排行榜</p>
+                                <span>制作时间：2015.3-2015.4</span>
+                                <div class="btn" data-img="music.jpg">
+                                    查看详情
+                                </div>
+                            </dd>
+                            <dd>
+                                <H3>ps图标与icon字体</H3>
+                                <p>学习ps时制作的一些简单的ps扁平化图标、伪扁平化图标和拟物图标以及利用ai制作的icon字体</p>
+                                <span>制作时间：2015.2</span>
+                                <div class="btn" data-img="ui3.jpg">
+                                    查看详情
+                                </div>
+                            </dd>
+                            <dd>
+                                <H3>愤怒的小鸟游戏</H3>
+                                <p>利用ps制作的一个简单游戏</p>
+                                <span>制作时间：2015.3</span>
+                                <div class="btn" data-img="ui4.jpg">
+                                    查看详情
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <!--静态网页-->
+                <div class="static_web_page">
+                    <ol>
+                        <li><img src="images/1.jpg" alt="" data-name="yidong"></li>
+                        <li><img src="images/2.1.jpg" alt="" data-name="yintai"></li>
+                        <li><img src="images/5.jpg" alt="" data-name="pinguo"></li>
+                        <li><img src="images/4.jpg" alt="" data-name="fanke"></li>
+                        <li><img src="images/3.jpg" alt="" data-name="tianmao"></li>
+                        <li><img src="images/11.jpg" alt="" data-name="shafa"></li>
+                        <li><img src="images/11.png" alt="" data-name="bdyq"></li>
+                    </ol>
+                    <dl>
+                        <dd class="yidong">
+                            <a href="http://liyunnane.github.io/yidong" target="_blank"></a>
+                            <h2>中国移动通信</h2>
+                            <div class="fengge"></div>
+                            <span>这是初期学习前端时模拟的首个网页</span>
+                        </dd>
+                        <dd class="yintai">
+                            <a href="http://liyunnane.github.io/my-yt" target="_blank"></a>
+                            <h2>银泰网官方首页</h2>
+                            <div class="fengge"></div>
+                            <span>电商类网站,你值得拥有---原生js制作</span>
+                        </dd>
+                        <dd class="pinguo">
+                            <a href="http://liyunnane.github.io/myphoto" target="_blank"></a>
+                            <h2>苹果官网（中国）</h2>
+                            <div class="fengge"></div>
+                            <span>自己写的十二删格系统,实现响应式制作</span>
+                        </dd>
+                        <dd class="fanke">
+                            <a href="http://liyunnane.github.io/myphoto" target="_blank"></a>
+                            <h2>个人相册</h2>
+                            <div class="fengge"></div>
+                            <span>简单的小玩意</span>
+                        </dd>
+                        <dd class="tianmao">
+                            <a href="http://liyunnane.github.io/tm" target="_blank"></a>
+                            <h2>天猫网首页</h2>
+                            <div class="fengge"></div>
+                            <span>上天猫，就购了。jquery初练习</span>
+                        </dd>
+                        <dd class="shafa">
+                            <a href="http://liyunnane.github.io/bootstrap" target="_blank"></a>
+                            <h2>bootstrap</h2>
+                            <div class="fengge"></div>
+                            <span>利用scss制作的第一个栅格化网站</span>
+                        </dd>
+                        <dd class="bdyq">
+                            <a href="http://liyunnane.github.io/my--bdyq" target="_blank"></a>
+                            <h2>百度舆情首页</h2>
+                            <div class="fengge"></div>
+                            <span>学习fullPage插件的随手制作</span>
+                        </dd>
+
+                    </dl>
+                    <div class="btn">
+                        <div class="btnL"></div>
+                        <div class="btnR"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="floor clearfix" id="contacts">
+
+        <h2>联系我</h2>
+        <div class="box">
+            <span class="name">李云</span>
+            <div class="message">
+                <span>联系电话：8335903781</span>
+                <span>qq:497869410</span>
+                <span>email:18335903781@163.com</span>
+                <span>微信号：18335903781</span>
+            </div>
+        </div>
+        <div class="box1">
+            <h3>扫二维码<br/>手机端登录我的个人主页</h3>
+            <img src="images/ewm.png" alt="">
+        </div>
+        <div class="box2">
+            <h5>留言:</h5>
+            <ul>
+                <li></li>
+            </ul>
+            <form action="">
+                <textarea name="" id="" cols="30" rows="10" placeholder="如果您有意向或者任何疑问，可以联系我，也可以给我留言。。。"></textarea>
+                <input type="button" value="留下足迹">
+            </form>
+        </div>
+    </div>
+</div>
+<!--主体界面 end-->
+<!--侧边css3与html5动效展示 start-->
+<script src="js/jquery.transit.js"></script>
+<aside>
+    <div class="tx" title="特效时间">
+        <img src="image/image-sample.png" alt="">
+        <div class="css3 item">CSS3</div>
+        <div class="h5 item">HTML5</div>
+        <div class="other item">其它</div>
+    </div>
+    <div class="show">
+        <div class="play">
+                <div class="banner">
+                    <ul>
+                        <li>
+                            <div class="biaopanBox">
+                                <div class="biaopan">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="maobox">
+                                <div class="head">
+                                    <div class="mouth">
+                                        <div class="eye"></div>
+                                        <div class="eye"></div>
+                                        <div class="nose">
+                                            <div class="nose_top"></div>
+                                            <div class="nose_bottom">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <div class="whiskers">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="whiskers">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--围巾-->
+                                <div class="scarf"></div>
+                                <!--身体-->
+                                <div class="body">
+                                    <div class="dudou"></div>
+                                    <div class="suo">
+                                        <div class="point"></div>
+                                        <div class="xian"></div>
+                                    </div>
+                                </div>
+                                <!--手-->
+                                <div class="hand handl">
+                                    <div class="arm"></div>
+                                    <div class="mauler"></div>
+                                </div>
+                                <div class="hand handr">
+                                    <div class="arm"></div>
+                                    <div class="mauler"></div>
+                                </div>
+                                <!--脚-->
+                                <div class="footl"></div>
+                                <div class="footc"></div>
+                                <div class="footr"></div>
+                                <!--遮挡-->
+                                <div class="zdang1"></div>
+                                <div class="zdang2"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="yudibox"></div>
+                        </li>
+                        <li>
+                            <div class="alibox">
+                                <div class="item">
+                                    <div class="bg">&#xf002f;</div>
+                                    <div class="fg fg-1">&#xe62b;</div>
+                                </div>
+                                <div class="item">
+                                    <div class="bg">&#xe600;</div>
+                                    <div class="fg fg-2">&#xf00f5;</div>
+                                </div>
+                                <div class="item">
+                                    <div class="bg">&#xf01c6;</div>
+                                    <div class="fg fg-3">&#xe6ea;</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>敬请期待</li>
+                        <li>敬请期待</li>
+                    </ul>
+                </div>
+               <!--  <div class="smallScreen clearfix">
+                    <a href="http://fqlyyk.duapp.com/css3/表盘.html" target="_blank"><img src="images/aside/1.jpg" alt=""></a>
+                    <a href="http://fqlyyk.duapp.com/css3/mao.html" target="_blank"><img src="images/aside/2.jpg" alt=""></a>
+                    <a href="http://fqlyyk.duapp.com/css3/%E4%B8%8B%E9%9B%A8.html" target="_blank"><img src="images/aside/3.jpg" alt=""></a>
+                    <a href="http://fqlyyk.duapp.com/css3/%E9%98%BF%E9%87%8Cicon%E5%8A%A8%E7%94%BBless%E6%A1%88%E4%BE%8B/index.html" target="_blank"><img src="images/aside/4.jpg" alt=""></a>
+                </div>
+ -->                <div class="h5play">
+                    <a href="https://liyunnane.github.io/8.5beiwanglu/" target="_blank"><img src="images/h5/1.jpg" alt=""><span>待办事项</span></a>
+                    <a href="http://liyunnane.github.io/day-7.4" target="_blank"><img src="images/h5/2.jpg" alt=""><span>音频</span></a>
+                    <a href="http://liyunnane.github.io/huaban" target="_blank"><img src="images/h5/5.jpg" alt=""><span>canvas画板</span></a>
+                
+                </div>
+                <div class="others">
+                     <a href="http://liyunzhhuapp.duapp.com/app/" target="_blank"><img src="images/h5/111.png" alt="">知乎app</a>
+                     <a href="http://liyunzhhuapp.duapp.com/web/" target="_blank"><img src="images/h5/222.png" alt="">知乎pc端</a>
+                     <a href="http://liyunzhhuapp.duapp.com/wm/" target="_blank"><img src="images/h5/333.png" alt="">知乎移动端</a>
+                 </div>
+                <div class="close">+</div>
+        </div>
+    </div>
+</aside>
+<style>
+    .mymusic{
+        position:fixed;
+        right:60px;
+        bottom:20px;
+        width:100px;
+        height:auto;
+    }
+
+    @media screen  and (max-width:500px) {
+        .mymusic{
+            display: none;
+        }
+    }
+    .mymusic h5{
+        text-align: center;
+        font-weight:400;
+        height:30px;
+        line-height: 30px;
+    }
+    .mymusic img{
+        width:100%;
+    }
+    .show .close{
+        width:30px;
+        height:30px;
+        font-size:26px;
+        color:#fff;
+        transform:rotate(45deg);
+        -webkit-transform:rotate(45deg);
+        position:absolute;
+        right:10px;
+        top:10px;
+        cursor:pointer;
+    }
+    .others{
+    display:table;
+    width:100%;
+    margin-top:100px;
+    }
+    .others a{
+        text-align: center;
+        font-size:24px;
+        color:#fff;
+    display:table-cell;
+    }
+
+    @media screen and (max-width:600px) {
+        .others a{
+            display: block;
+            margin:30px;
+            height:30px;
+        }
+    }
+</style>
+
+<!--侧边css3与html5动效展示 end-->
+<div style="display:none">
+    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+</div>
+</body>
+
+
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/index.js"></script>
+</html>

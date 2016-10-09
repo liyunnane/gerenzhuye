@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3d轮播</title>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery.transit.js"></script>
+    <script>
+        $(function () {
+            var num = 0;
+            var dt = setInterval(function () {
+                $(".banner>ul").transition({rotateY: "-=60"});
+                window.rotatenum = num % 6;
+                num++;
+//                alert(rotatenum)
+            }, 2000);
+            $(".banner").hover(function () {
+                clearInterval(dt);
+            }, function () {
+                dt = setInterval(function () {
+                    $(".banner>ul").transition({rotateY: "-=60"});
+                }, 2000);
+            });
+            /*jquery.transition.js
+             * 1、支持队列
+             * 2、支持css的所有属性
+             * 3、支持动画时间与方式---可以写在transition内部也可以写在内部duration  delay easing*/
+        })
+    </script>
+    <style>
+        .banner {
+            width: 100%;
+            height: 400px;
+            border: 1px solid red;
+            perspective: 1000px;
+            overflow: hidden;
+        }
+        .banner ul {
+            width: 660px;
+            height: 440px;
+            margin: 0 auto;
+            position: relative;
+            list-style: none;
+            padding: 0;
+            transform-style: preserve-3d;
+            transform-origin: center center -800px;
+        }
+        .banner ul li {
+            width: 100%;
+            height:100%;
+            text-align: center;
+            line-height: 440px;
+            font-size: 80px;
+            background: #ecc126;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform-origin: center center -800px;
+        }
+        .banner ul li:nth-child(2) {
+            background: #EEEEEE;
+            transform: rotateY(60deg);
+        }
+
+        .banner ul li:nth-child(3) {
+            background: #808080;
+            transform: rotateY(120deg);
+            overflow: hidden;
+        }
+
+        .banner ul li:nth-child(4) {
+            background: #06ff00;
+            transform: rotateY(180deg);
+        }
+
+        .banner ul li:nth-child(5) {
+            background: #00f0ff;
+            transform: rotateY(240deg);
+        }
+
+        .banner ul li:nth-child(6) {
+            background: #0600ff;
+            transform: rotateY(300deg);
+        }
+    </style>
+</head>
+<body>
+<div class="banner">
+    <ul>
+        <li>
+            <div class="biaopanBox">
+                <div class="biaopan">
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="maobox">
+                <div class="head">
+                    <div class="mouth">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                        <div class="nose">
+                            <div class="nose_top"></div>
+                            <div class="nose_bottom">
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="whiskers">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="whiskers">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <!--围巾-->
+                <div class="scarf"></div>
+                <!--身体-->
+                <div class="body">
+                    <div class="dudou"></div>
+                    <div class="suo">
+                        <div class="point"></div>
+                        <div class="xian"></div>
+                    </div>
+                </div>
+                <!--手-->
+                <div class="hand handl">
+                    <div class="arm"></div>
+                    <div class="mauler"></div>
+                </div>
+                <div class="hand handr">
+                    <div class="arm"></div>
+                    <div class="mauler"></div>
+                </div>
+                <!--脚-->
+                <div class="footl"></div>
+                <div class="footc"></div>
+                <div class="footr"></div>
+                <!--遮挡-->
+                <div class="zdang1"></div>
+                <div class="zdang2"></div>
+            </div>
+        </li>
+        <li>
+            <div class="yudibox"></div>
+        </li>
+        <li>
+            <div class="alibox">
+                <div class="item">
+                    <div class="bg">&#xf002f;</div>
+                    <div class="fg fg-1">&#xe62b;</div>
+                </div>
+                <div class="item">
+                    <div class="bg">&#xe600;</div>
+                    <div class="fg fg-2">&#xf00f5;</div>
+                </div>
+                <div class="item">
+                    <div class="bg">&#xf01c6;</div>
+                    <div class="fg fg-3">&#xe6ea;</div>
+                </div>
+            </div>
+        </li>
+        <li>敬请期待</li>
+        <li>敬请期待</li>
+    </ul>
+</div>
+</body>
+
+<!--表盘-->
+<script>
+    $(function () {
+        var h, m, s;
+
+        function createBp() {
+            /*创建刻度*/
+            for (var i = 0; i < 60; i++) {
+                var widths = 2;
+                var heights = 8;
+                if (i % 5 == 0) {
+                    widths = 4;
+                    heights = 16;
+                }
+                var num = i * 6;
+                $("<div></div>").css({
+                    width: widths,
+                    height: heights,
+                    background: "rgba(55, 72, 148, 0.85)",
+                    position: "absolute",
+                    left: "149px",
+                    top: "7px",
+                    transformOrigin: "1px 143px",
+                    transform: "rotate(" + num + "deg)"
+                }).appendTo(".biaopan");
+            }
+            /*创建数字*/
+            for (var i = 0; i < 12; i++) {
+                let num = (i + 6) % 12;
+                if (num == 0) {
+                    num = 12;
+                }
+                let angle = -i * 30 * Math.PI / 180;
+                let left = 135 + 120 * Math.sin(angle) + "px";
+                let top = 135 + 120 * Math.cos(angle) + "px";
+                $("<div>" + num + "</div>")
+                        .css({
+                            width: "30px",
+                            height: "30px",
+                            position: "absolute",
+                            left: left,
+                            top: top,
+                            fontSize: "20px",
+                            fontWeight: "800",
+                            textAlign: "center",
+                            lineHeight: "30px"
+                        }).appendTo(".biaopan");
+            }
+
+            /*创建时间*/
+            var date = new Date();
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var soc = date.getSeconds();
+            /*时针*/
+            h = $("<div></div>").css({
+                width: 10,
+                height: 55,
+                background: "#000",
+                borderRadius: "6px 6px 5px 5px/15px 15px 3px 3px",
+                position: "absolute",
+                left: 145,
+                bottom: 148,
+                zIndex: 3,
+                transformOrigin: "5px 53px",
+                transform: "rotate(" + (hour * 30 + min * 0.5) + "deg)"
+            }).appendTo(".biaopan");
+            /*分针*/
+            m = $("<div></div>").css({
+                width: 8,
+                height: 70,
+//                    background: "#000",
+                borderRadius: "5px 5px 5px 5px",
+                position: "absolute",
+                backgroundImage: "linear-gradient(to bottom,#292929 0%,#292929 60%,#0A0A0A 90%)",
+                left: 146,
+                bottom: 140,
+                zIndex: 2,
+                transformOrigin: "center 60px",
+                transform: "rotate(" + min * 6 + "deg)"
+            }).appendTo(".biaopan");
+            /*秒针*/
+            s = $("<div></div>").css({
+                width: 4,
+                height: 120,
+                background: "#f00",
+                borderRadius: "5px 5px 5px 5px",
+                position: "absolute",
+                left: 148,
+                bottom: 125,
+                zIndex: 1,
+                transformOrigin: "2px 95px",
+                transform: "rotate(" + soc * 6 + "deg)"
+            }).appendTo(".biaopan");
+        }
+
+        createBp();
+        function createTime() {
+            setInterval(function () {
+                var date = new Date();
+                var hour = date.getHours();
+                var min = date.getMinutes();
+                var soc = date.getSeconds();
+                s.css({transform: "rotate(" + soc * 6 + "deg)"});
+                m.css({transform: "rotate(" + min * 6 + "deg)"});
+                h.css({transform: "rotate(" + (hour * 30 + min * 0.5) + "deg)"});
+                /*连接一个集合需要需要用括号圈起来*/
+            }, 1000);
+        }
+
+        createTime();
+    })
+</script>
+<style>
+    .biaopanBox {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        background: url(biaopan.jpg) no-repeat top center;
+        background-size: contain;
+        border: 1px solid transparent;
+    }
+
+    .biaopan {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: scale(0.5) translate(-49px, -85px);
+        background-image: radial-gradient(circle at center center, #fbfbfb 0, #ddd 125px, #ccc 136px, #524b7f 142px, #756f7f 144px, #111 144px, #111 146px, #999 146px, #999 150px);
+    }
+</style>
+<!--表盘结束-->
+<!--机器猫-->
+<style>
+    .maobox {
+        width: 328px;
+        height: 422px;
+        background-color: #eee;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        /*bottom: 0;*/
+        margin: auto;
+        /*border-top-width:0;*/
+        /*border-bottom-width:30px;*/
+        /*border-image-width:30px;*/
+        /*border-image-source:url(bottom.png);*/
+        /*border-image-slice:33;*/
+        /*border-image-repeat:round;*/
+    }
+
+    .maobox .head {
+        width: 250px;
+        height: 230px;
+        border: 1px solid #33788e;
+        border-radius: 100px;
+        background-image: radial-gradient(at 218px 40px, #90e6e5 0, #05b8df 40px, #05b8df 150px, #125061);
+        box-shadow: -10px 10px 10px #9ea1a8;
+        margin: 20px auto;
+        position: relative;
+    }
+
+    .maobox .head .mouth {
+        width: 213px;
+        height: 165px;
+        border: 3px solid #2a5a72;
+        border-radius: 48%;
+        background-color: #fff;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        margin-left: -108px;
+    }
+
+    .maobox .head .mouth .eye:nth-child(1) {
+        width: 57px;
+        height: 71px;
+        border: 3px solid #2a5a72;
+        border-radius: 30px/32px;
+        border-right-width: 0;
+        background-image: radial-gradient(circle at 40px 50px, #1f1c20 0, #1f1c20 5px, #fff 8px);
+        position: absolute;
+        left: 50%;
+        margin-left: -60px;
+        top: -35px;
+        z-index: 2;
+    }
+
+    .maobox .head .mouth .eye:nth-child(2) {
+        width: 57px;
+        height: 71px;
+        border: 3px solid #2a5a72;
+        border-left-width: 0;
+        border-radius: 30px/32px;
+        background-image: radial-gradient(circle at 17px 50px, #1f1c20 0, #1f1c20 5px, #fff 8px);
+        position: absolute;
+        left: 50%;
+        margin-left: 3px;
+        top: -35px;
+        z-index: 2;
+    }
+
+    .maobox .head .mouth .nose {
+        width: 30px;
+        height: 30px;
+        border: 2px solid #682f17;
+        border-radius: 50%;
+        background-image: radial-gradient(circle at 22px 14px, #fff 0, #e08e53 6px, #ce3c0b);
+        position: absolute;
+        left: 50%;
+        top: 27px;
+        margin-left: -16px;
+        z-index: 1;
+    }
+
+    .maobox .head .mouth .nose div.nose_top {
+        width: 6px;
+        border-top: 6px solid #67625f;
+        border-radius: 50%;
+        margin: -20px auto;
+    }
+
+    .maobox .head .mouth .nose div.nose_bottom {
+        width: 8px;
+        height: 74px;
+        background-image: linear-gradient(to right, #d7d7d7 2px, #898989 2px, #898989 4px, #9c9c9c 4px, #9c9c9c 6px, #d7d7d7 6px);
+        position: absolute;
+        left: 50%;
+        bottom: -76px;
+        margin-left: -4px;
+    }
+
+    .maobox .head .mouth .nose div.nose_bottom div:only-child {
+        width: 122px;
+        border-bottom: 2px solid #363636;
+        height: 60px;
+        border-radius: 51px/30px;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        margin-left: -61px;
+    }
+
+    .maobox .head .mouth .whiskers {
+        width: 50px;
+        height: 54px;
+        position: absolute;
+        left: 50%;
+        top: 50px;
+    }
+
+    /*.head .mouth .whiskers:nth-of-type(1){*/
+    /*margin-left:-86px;*/
+    /*}*/
+    .maobox .head .mouth .whiskers:nth-child(4) {
+        margin-left: -86px;
+    }
+
+    .maobox .head .mouth .whiskers:nth-child(5) {
+        margin-left: 36px;
+    }
+
+    .maobox .head .mouth .whiskers div:nth-child(2) {
+        width: 50px;
+        height: 6px;
+        background-image: linear-gradient(to bottom, #dcdcdc 2px, #6a6a6a 2px, #6a6a6a 4px, #dcdcdc 4px);
+        transform: translateY(14px);
+    }
+
+    .maobox .head .mouth .whiskers div:nth-child(odd) {
+        width: 50px;
+        height: 6px;
+        background: #b1b1b1;
+        background-image: linear-gradient(to right, #99af9a 8px, #a09b9f 10px, #c6c6c6 40px, #99af9a);
+    }
+
+    .maobox .head .mouth .whiskers:nth-child(4) div:nth-child(1) {
+        transform: skewY(22deg);
+    }
+
+    .maobox .head .mouth .whiskers:nth-child(4) div:nth-child(3) {
+        transform: skewY(-22deg) translateY(29px);
+    }
+
+    .maobox .head .mouth .whiskers:nth-child(5) div:nth-child(1) {
+        transform: skewY(-22deg);
+    }
+
+    .maobox .head .mouth .whiskers:nth-child(5) div:nth-child(3) {
+        transform: skewY(22deg) translateY(29px);
+    }
+
+    /*围巾*/
+    .maobox div.scarf {
+        width: 192px;
+        height: 22px;
+        border: 2px solid #4d140d;
+        border-radius: 10px;
+        background-image: radial-gradient(circle at center top, #a23a2e 14%, #7c1e09 80%);
+        box-shadow: 0 2px 5px #470b0e;
+        position: absolute;
+        left: 50%;
+        margin-left: -96px;
+        top: 230px;
+    }
+
+    /*身体*/
+    .maobox div.body {
+        width: 172px;
+        height: 132px;
+        border-left: 2px solid #0d5b71;
+        border-right: 2px solid #0d5b71;
+        background-image: radial-gradient(circle at 86px 36px, #fff 62px, #274b5f 66px, #255068 68px, #2680A1 74px, #00D1FE);
+        box-shadow: -10px 0px 10px #9ea1a8;
+        position: absolute;
+        left: 50%;
+        margin-left: -86px;
+        top: 252px;
+        z-index: 5;
+    }
+
+    .maobox div.body .dudou {
+        width: 100px;
+        height: 50px;
+        border: 4px solid #9b9597;
+        border-radius: 0 0 50% 50%/50% 50% 93% 93%;
+        position: absolute;
+        left: 50%;
+        margin-left: -53px;
+        top: 30px;
+    }
+
+    .maobox div.body .suo {
+        width: 30px;
+        height: 30px;
+        border: 3px solid rgba(140, 134, 95, 0.6);
+        border-radius: 50%;
+        background-image: linear-gradient(to bottom, #f3f56c 6px, #96910b 12px, #96910b 16px, #f3f56c 24px);
+        position: absolute;
+        left: 50%;
+        top: -20px;
+        margin-left: -19px;
+    }
+
+    .maobox div.body .suo .point {
+        width: 10px;
+        height: 6px;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 3px;
+        margin: 17px auto 0;
+    }
+
+    .maobox div.body .suo .xian {
+        width: 6px;
+        height: 7px;
+        background: #666600;
+        margin: 0 auto
+    }
+
+    .maobox .hand {
+        width: 70px;
+        height: 80px;
+        position: absolute;
+        left: 50%;
+        top: 252px;
+        z-index: 8;
+        /*transform-style:preserve-3d;*/
+        perspective: 50px;
+    }
+
+    .maobox .handl {
+        margin-left: -155px;
+    }
+
+    .maobox .handr {
+        margin-left: 85px;
+    }
+
+    .maobox .hand .mauler {
+        width: 46px;
+        height: 46px;
+        border-radius: 18px/17px;
+        background: #fff;
+        box-shadow: 0 0 4px 3px #787878;
+        position: absolute;
+        bottom: 0;
+        z-index: 999999;
+    }
+
+    .maobox .handl .arm {
+        width: 44px;
+        height: 36px;
+        position: absolute;
+        left: 18px;
+        bottom: 0px;
+        -webkit-transform-origin: left;
+        -moz-transform-origin: left;
+        -ms-transform-origin: left;
+        -o-transform-origin: left;
+        transform-origin: left;
+        -webkit-transform: rotateY(-20deg) skewY(-36deg);
+        -moz-transform: rotateY(-20deg) skewY(-36deg);
+        -ms-transform: rotateY(-20deg) skewY(-36deg);
+        -o-transform: rotateY(-20deg) skewY(-36deg);
+        transform: rotateY(-20deg) skewY(-36deg);
+        border-top: 2px solid #286779;
+        border-bottom: 2px solid #24626f;
+        background-image: linear-gradient(to right, #2a748a, #1E90B4);
+    }
+
+    .maobox .handr .arm {
+        width: 44px;
+        height: 36px;
+        position: absolute;
+        right: 18px;
+        bottom: 0px;
+        transform-origin: right;
+        transform: rotateY(20deg) skewY(36deg);
+        border-top: 2px solid #286779;
+        border-bottom: 2px solid #24626f;
+        background-image: linear-gradient(to left, #2a748a, #1E90B4);
+    }
+
+    .maobox .handl .mauler {
+        left: 0;
+    }
+
+    .maobox .handr .mauler {
+        right: 0;
+    }
+
+    /*脚*/
+    .maobox .footl, .footr {
+        width: 96px;
+        height: 22px;
+        border-top: 2px solid #9ebdc9;
+        border-bottom: 2px solid #9ebdc9;
+        box-shadow: 0 2px 4px 1px rgba(199, 199, 201, 1);
+        position: absolute;
+        top: 386px;
+        z-index: 99;
+        left: 50%;
+    }
+
+    .maobox .footl {
+        margin-left: -98px;
+        border-top-left-radius: 14px 22px;
+        border-top-right-radius: 11px;
+        border-bottom-left-radius: 11px;
+        border-bottom-right-radius: 11px;
+        background-image: radial-gradient(circle at top right, #fff 85%, #A09B9F);
+    }
+
+    .maobox .footr {
+        margin-left: 2px;
+        border-top-left-radius: 11px;
+        border-top-right-radius: 14px 22px;
+        border-bottom-left-radius: 11px;
+        border-bottom-right-radius: 11px;
+        background-image: radial-gradient(circle at top left, #fff 85%, #A09B9F);
+    }
+
+    .maobox .footc {
+        width: 16px;
+        height: 16px;
+        border: 2px solid #205371;
+        border-bottom: 0;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        bottom: 26px;
+        z-index: 10;
+        margin-left: -8px;
+        background-image: radial-gradient(circle at top right, #b7b6b9 4px, #edebec 8px);
+        box-shadow: -1px 3px 5px 2px #858585;
+    }
+
+    .maobox .zdang1 {
+        width: 3px;
+        height: 48px;
+        background: #1A93BA;
+        position: absolute;
+        left: 78px;
+        top: 253px;
+        border-radius: 3px;
+        z-index: 99999;
+    }
+
+    .maobox .zdang2 {
+        width: 3px;
+        height: 48px;
+        background: #1e8fb2;
+        position: absolute;
+        right: 78px;
+        top: 253px;
+        border-radius: 3px;
+        z-index: 99999;
+    }
+</style>
+<!--机器猫结束-->
+<!--雨滴-->
+<style>
+    .yudibox {
+        width: 100%;
+        height: 100%;
+        background: url(yudi.gif) no-repeat;
+        background-size: cover;
+    }
+
+    .yudi {
+        width: 5px;
+        height: 10px;
+        background: #e4f8ff;
+    }
+</style>
+<script>
+
+    $(function () {
+            function start() {
+                var width = document.documentElement.clientWidth;
+                var height = document.documentElement.clientHeight;
+                var arr = [];
+                for (var i = 0; i < 200; i++) {
+                    var rleft = parseInt(width * Math.random());
+                    var rtop = -100 * Math.random() - 30;
+                    var div = document.createElement("div");
+                    div.style.cssText = "width:3px;height:5px;background:#e4f8ff;position:absolute;left:" + rleft + "px;top:" + rtop +
+                            "px;transition:all ease-in 3s " + 3 * Math.random() + "s";
+                    /*这儿的延迟时间最好设置的比动画时间打一点*/
+                    /*div.style.cssText
+                     * 等于号后面是双引号，每个样式用分号隔开*/
+                    arr.push(div);
+
+                    document.getElementsByClassName("yudibox")[0].appendChild(div);
+
+// setTimeout(function(){
+// arr[i].style.transform="translateY("+(height-rtop+10)+"px)"
+// },0);
+                    /*这儿究竟是什么？？？？？？*/
+                }
+// console.log(arr)
+                setTimeout(function () {
+                    for (var j = 0; j < arr.length; j++) {
+                        arr[j].style.transform = "translateY(" + (height + 140) + "px)";
+                        arr[j].addEventListener("transitionend", function () {
+                            this.style.transition = "";
+                            this.style.transform = "translateY(0)";
+                            var that = this;
+                            setTimeout(function () {
+                                that.style.transition = "all 3s ease-out";
+                                that.style.transform = "translateY(" + (height + 140) + "px)"
+                            }, 0)
+                        }, false);
+                    }
+                }, 0);
+                /*时间函数放在循环的内部和外部不一样？？？？？*/
+            }
+
+            start();
+            $(window).focus(function () {
+                document.getElementsByClassName("yudibox")[0].innerHTML = "";
+                start();
+            })
+            $(window).blur(function () {
+                document.getElementsByClassName("yudibox")[0].innerHTML = "";
+            })
+    })
+</script>
+<!--雨滴结束-->
+<!--阿里运动-->
+<style>
+    @keyframes circle {
+        0% {
+            transform: translate(0px, 0px);
+        }
+        1% {
+            transform: translate(-0.6279052px, -0.01973272px);
+        }
+        2% {
+            transform: translate(-1.25333234px, -0.07885299px);
+        }
+        3% {
+            transform: translate(-1.87381315px, -0.17712749px);
+        }
+        4% {
+            transform: translate(-2.48689887px, -0.31416839px);
+        }
+        5% {
+            transform: translate(-3.09016994px, -0.48943484px);
+        }
+        6% {
+            transform: translate(-3.68124553px, -0.70223514px);
+        }
+        7% {
+            transform: translate(-4.25779292px, -0.95172948px);
+        }
+        8% {
+            transform: translate(-4.81753674px, -1.2369332px);
+        }
+        9% {
+            transform: translate(-5.35826795px, -1.55672074px);
+        }
+        10% {
+            transform: translate(-5.87785252px, -1.90983006px);
+        }
+        11% {
+            transform: translate(-6.3742399px, -2.29486757px);
+        }
+        12% {
+            transform: translate(-6.84547106px, -2.71031373px);
+        }
+        13% {
+            transform: translate(-7.28968627px, -3.15452894px);
+        }
+        14% {
+            transform: translate(-7.70513243px, -3.6257601px);
+        }
+        15% {
+            transform: translate(-8.09016994px, -4.12214748px);
+        }
+        16% {
+            transform: translate(-8.44327926px, -4.64173205px);
+        }
+        17% {
+            transform: translate(-8.7630668px, -5.18246326px);
+        }
+        18% {
+            transform: translate(-9.04827052px, -5.74220708px);
+        }
+        19% {
+            transform: translate(-9.29776486px, -6.31875447px);
+        }
+        20% {
+            transform: translate(-9.51056516px, -6.90983006px);
+        }
+        21% {
+            transform: translate(-9.68583161px, -7.51310113px);
+        }
+        22% {
+            transform: translate(-9.82287251px, -8.12618685px);
+        }
+        23% {
+            transform: translate(-9.92114701px, -8.74666766px);
+        }
+        24% {
+            transform: translate(-9.98026728px, -9.3720948px);
+        }
+        25% {
+            transform: translate(-10px, -10px);
+        }
+        26% {
+            transform: translate(-9.98026728px, -10.6279052px);
+        }
+        27% {
+            transform: translate(-9.92114701px, -11.25333234px);
+        }
+        28% {
+            transform: translate(-9.82287251px, -11.87381315px);
+        }
+        29% {
+            transform: translate(-9.68583161px, -12.48689887px);
+        }
+        30% {
+            transform: translate(-9.51056516px, -13.09016994px);
+        }
+        31% {
+            transform: translate(-9.29776486px, -13.68124553px);
+        }
+        32% {
+            transform: translate(-9.04827052px, -14.25779292px);
+        }
+        33% {
+            transform: translate(-8.7630668px, -14.81753674px);
+        }
+        34% {
+            transform: translate(-8.44327926px, -15.35826795px);
+        }
+        35% {
+            transform: translate(-8.09016994px, -15.87785252px);
+        }
+        36% {
+            transform: translate(-7.70513243px, -16.3742399px);
+        }
+        37% {
+            transform: translate(-7.28968627px, -16.84547106px);
+        }
+        38% {
+            transform: translate(-6.84547106px, -17.28968627px);
+        }
+        39% {
+            transform: translate(-6.3742399px, -17.70513243px);
+        }
+        40% {
+            transform: translate(-5.87785252px, -18.09016994px);
+        }
+        41% {
+            transform: translate(-5.35826795px, -18.44327926px);
+        }
+        42% {
+            transform: translate(-4.81753674px, -18.7630668px);
+        }
+        43% {
+            transform: translate(-4.25779292px, -19.04827052px);
+        }
+        44% {
+            transform: translate(-3.68124553px, -19.29776486px);
+        }
+        45% {
+            transform: translate(-3.09016994px, -19.51056516px);
+        }
+        46% {
+            transform: translate(-2.48689887px, -19.68583161px);
+        }
+        47% {
+            transform: translate(-1.87381315px, -19.82287251px);
+        }
+        48% {
+            transform: translate(-1.25333234px, -19.92114701px);
+        }
+        49% {
+            transform: translate(-0.6279052px, -19.98026728px);
+        }
+        50% {
+            transform: translate(0px, -20px);
+        }
+        51% {
+            transform: translate(0.6279052px, -19.98026728px);
+        }
+        52% {
+            transform: translate(1.25333234px, -19.92114701px);
+        }
+        53% {
+            transform: translate(1.87381315px, -19.82287251px);
+        }
+        54% {
+            transform: translate(2.48689887px, -19.68583161px);
+        }
+        55% {
+            transform: translate(3.09016994px, -19.51056516px);
+        }
+        56% {
+            transform: translate(3.68124553px, -19.29776486px);
+        }
+        57% {
+            transform: translate(4.25779292px, -19.04827052px);
+        }
+        58% {
+            transform: translate(4.81753674px, -18.7630668px);
+        }
+        59% {
+            transform: translate(5.35826795px, -18.44327926px);
+        }
+        60% {
+            transform: translate(5.87785252px, -18.09016994px);
+        }
+        61% {
+            transform: translate(6.3742399px, -17.70513243px);
+        }
+        62% {
+            transform: translate(6.84547106px, -17.28968627px);
+        }
+        63% {
+            transform: translate(7.28968627px, -16.84547106px);
+        }
+        64% {
+            transform: translate(7.70513243px, -16.3742399px);
+        }
+        65% {
+            transform: translate(8.09016994px, -15.87785252px);
+        }
+        66% {
+            transform: translate(8.44327926px, -15.35826795px);
+        }
+        67% {
+            transform: translate(8.7630668px, -14.81753674px);
+        }
+        68% {
+            transform: translate(9.04827052px, -14.25779292px);
+        }
+        69% {
+            transform: translate(9.29776486px, -13.68124553px);
+        }
+        70% {
+            transform: translate(9.51056516px, -13.09016994px);
+        }
+        71% {
+            transform: translate(9.68583161px, -12.48689887px);
+        }
+        72% {
+            transform: translate(9.82287251px, -11.87381315px);
+        }
+        73% {
+            transform: translate(9.92114701px, -11.25333234px);
+        }
+        74% {
+            transform: translate(9.98026728px, -10.6279052px);
+        }
+        75% {
+            transform: translate(10px, -10px);
+        }
+        76% {
+            transform: translate(9.98026728px, -9.3720948px);
+        }
+        77% {
+            transform: translate(9.92114701px, -8.74666766px);
+        }
+        78% {
+            transform: translate(9.82287251px, -8.12618685px);
+        }
+        79% {
+            transform: translate(9.68583161px, -7.51310113px);
+        }
+        80% {
+            transform: translate(9.51056516px, -6.90983006px);
+        }
+        81% {
+            transform: translate(9.29776486px, -6.31875447px);
+        }
+        82% {
+            transform: translate(9.04827052px, -5.74220708px);
+        }
+        83% {
+            transform: translate(8.7630668px, -5.18246326px);
+        }
+        84% {
+            transform: translate(8.44327926px, -4.64173205px);
+        }
+        85% {
+            transform: translate(8.09016994px, -4.12214748px);
+        }
+        86% {
+            transform: translate(7.70513243px, -3.6257601px);
+        }
+        87% {
+            transform: translate(7.28968627px, -3.15452894px);
+        }
+        88% {
+            transform: translate(6.84547106px, -2.71031373px);
+        }
+        89% {
+            transform: translate(6.3742399px, -2.29486757px);
+        }
+        90% {
+            transform: translate(5.87785252px, -1.90983006px);
+        }
+        91% {
+            transform: translate(5.35826795px, -1.55672074px);
+        }
+        92% {
+            transform: translate(4.81753674px, -1.2369332px);
+        }
+        93% {
+            transform: translate(4.25779292px, -0.95172948px);
+        }
+        94% {
+            transform: translate(3.68124553px, -0.70223514px);
+        }
+        95% {
+            transform: translate(3.09016994px, -0.48943484px);
+        }
+        96% {
+            transform: translate(2.48689887px, -0.31416839px);
+        }
+        97% {
+            transform: translate(1.87381315px, -0.17712749px);
+        }
+        98% {
+            transform: translate(1.25333234px, -0.07885299px);
+        }
+        99% {
+            transform: translate(0.6279052px, -0.01973272px);
+        }
+        100% {
+            transform: translate(0px, 0px);
+        }
+    }
+
+    @keyframes sin {
+        0% {
+            transform: translate(0px, 0px);
+        }
+        5% {
+            transform: translate(8px, 5.14230088px);
+        }
+        10% {
+            transform: translate(16px, 7.87846202px);
+        }
+        15% {
+            transform: translate(24px, 6.92820323px);
+        }
+        20% {
+            transform: translate(32px, 2.73616115px);
+        }
+        25% {
+            transform: translate(40px, -2.73616115px);
+        }
+        30% {
+            transform: translate(48px, -6.92820323px);
+        }
+        35% {
+            transform: translate(56px, -7.87846202px);
+        }
+        40% {
+            transform: translate(64px, -5.14230088px);
+        }
+        45% {
+            transform: translate(72px, 0px);
+        }
+        50% {
+            transform: translate(80px, 5.14230088px);
+        }
+        55% {
+            transform: translate(88px, 7.87846202px);
+        }
+        60% {
+            transform: translate(96px, 6.92820323px);
+        }
+        65% {
+            transform: translate(104px, 2.73616115px);
+        }
+        70% {
+            transform: translate(112px, -2.73616115px);
+        }
+        75% {
+            transform: translate(120px, -6.92820323px);
+        }
+        80% {
+            transform: translate(128px, -7.87846202px);
+        }
+        85% {
+            transform: translate(136px, -5.14230088px);
+        }
+        90% {
+            transform: translate(144px, 0px);
+        }
+        95% {
+            transform: translate(152px, 5.14230088px);
+        }
+        100% {
+            transform: translate(160px, 7.87846202px);
+        }
+    }
+
+    @keyframes circle1 {
+        0% {
+            transform: rotate(0deg);
+        }
+        5% {
+            transform: rotate(18deg);
+        }
+        10% {
+            transform: rotate(36deg);
+        }
+        15% {
+            transform: rotate(54deg);
+        }
+        20% {
+            transform: rotate(72deg);
+        }
+        25% {
+            transform: rotate(90deg);
+        }
+        30% {
+            transform: rotate(108deg);
+        }
+        35% {
+            transform: rotate(126deg);
+        }
+        40% {
+            transform: rotate(144deg);
+        }
+        45% {
+            transform: rotate(162deg);
+        }
+        50% {
+            transform: rotate(180deg);
+        }
+        55% {
+            transform: rotate(198deg);
+        }
+        60% {
+            transform: rotate(216deg);
+        }
+        65% {
+            transform: rotate(234deg);
+        }
+        70% {
+            transform: rotate(252deg);
+        }
+        75% {
+            transform: rotate(270deg);
+        }
+        80% {
+            transform: rotate(288deg);
+        }
+        85% {
+            transform: rotate(306deg);
+        }
+        90% {
+            transform: rotate(324deg);
+        }
+        95% {
+            transform: rotate(342deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @font-face {
+        font-family: 'iconfont';
+        src: url('css/iconfont.eot'); /* IE9*/
+        src: url('css/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('css/iconfont.woff') format('woff'), /* chrome、firefox */ url('css/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('css/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+    }
+
+    .alibox {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background: #00e8c9;
+        /*text-align: justify;*/
+    }
+
+    .alibox .alibox:after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+    }
+
+    .alibox .item {
+        width: 33.333333%;
+        height: 100%;
+        box-sizing: border-box;
+        border: 1px solid red;
+        float: left;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .alibox .bg, .fg {
+        font-family: "iconfont";
+    }
+
+    .alibox .bg {
+        font-size: 220px;
+        color: #262634;
+        text-align: center;
+        line-height: 400px;
+    }
+
+    .alibox .fg {
+        position: absolute;
+        font-size: 70px;
+        color: #E74C27;
+        right: 15px;
+        bottom: -50px;
+    }
+
+    .alibox .fg.fg-2 {
+        left: -130px;
+        bottom: -50px;
+    }
+
+    .alibox .item:hover .fg-1 {
+        transform-origin: center -10px;
+        animation: circle 1s infinite linear;
+    }
+
+    .alibox .item:hover .fg-2 {
+        animation: sin 1s linear backwards;
+    }
+
+    .alibox .item:hover .fg-3 {
+        /*transform-origin: center -10px;*/
+        animation: circle1 3s infinite linear;
+    }
+</style>
+<!--阿里运动结束-->
+</html>
